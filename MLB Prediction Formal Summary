@@ -1,0 +1,34 @@
+Predicting Undervalued Major League Baseball Players, and Future Stars Machine Learning Model, Formal Summary
+
+In this project I created a comprehensive machine learning pipeline designed to identify undervalued players and forecast future talent using historical and modern performance data.
+Below is a summary of the project’s structure, methodology, and key objectives.
+1. Project Core Objective
+The primary goal is to use Scikit-Learn’s Linear Regression to predict a player's WAR (Wins Above Replacement), while displaying skills in Data Manipulation & Visualization using traditional Data Science python packages such as Pandas, Numpy, MatPlotlLib & Seaborn. By analyzing the relationship between standard hitting metrics and total value, the model identifies "undervalued" players—those whose statistical profiles suggest they should be producing more value than traditionally perceived.
+2. Data Integration & Engineering
+The project relies on two major data sources:
+•	Performance Stats: A dataset covering batting statistics from 1901 to the present, from https://thebaseballscholar.com/data-library/ 
+•	Biographical Data: A multi-part library (joined from 16 separate CSV files) used to calculate Player Age for every specific season. These datasets were pulled from https://github.com/chadwickbureau/register/tree/master/data 
+
+Key Features Engineered:
+•	Age: Calculated as Season - Birth Year, allowing the model to account for the "Aging Curve."
+•	Rate Metrics: The model converts raw counts into skills-based ratios, including Batting Average (AVG), On-Base Percentage (OBP), and Slugging (SLG).
+•	OPS (On-base Plus Slugging): A combined metric used as a primary indicator of offensive threat.
+•	Total Career WAR: A contextual metric added to distinguish between "one-hit wonders" and sustained superstars.
+3. Explanatory Data Analysis (EDA)
+Before modeling, the project utilizes a visualization dashboard to prove the "logic" of the game:
+•	The Aging Curve: A line plot demonstrating that player value typically peaks in the late 20s.
+•	Correlation Heatmaps: These identify which stats are the strongest "leads" for a high WAR. Metrics like OBP and OPS consistently show the strongest mathematical connection to winning.
+4. Machine Learning Methodology
+The project follows 3 main stages, broken down into an 8 segment workflow:
+1.	Data Cleaning: Filtering for statistical significance (players with >50 Plate Appearances) to remove noise.
+2.	Scaling: Using StandardScaler to ensure that different units (like a .350 OBP vs. a 25-year-old Age) are weighted fairly by the mathematical engine.
+3.	Training & Testing: An 80/20 split is used. The model "learns" from historical data and is then tested on "unseen" data to calculate its $R^2$ Score (accuracy).
+5. Predictive Results & Scouting
+The final output of the project is split into two actionable reports:
+•	Historical Validation: A look back at young players (Ages 18-23) whom the model would have correctly identified as future stars based on their early career profiles (e.g., finding the "young" version of players like Justin Upton).
+•	2025 Scouting Report: A real-time application identifying the Top 20 Active Young Stars (Age 25 or under). The model ranks these players by Predicted Value, highlighting those who are currently performing at a level that historically precedes a superstar trajectory.
+Conclusion
+After combining over 100 years of baseball historical data with modern machine learning, The project not only identifies players from previous generations who "Digital Scout." It successfully moves beyond simple box scores to understand the deeper relationship between a player's age, their ability to get on base, and their total contribution to a team's success.
+Next Steps/Real World Application
+I am planning on creating a part 2 to this project, where we include players salaries, to see if they are undervalued or overvalued in the market, as well as applying the same calculation to past generations players (while adjusting for inflation). Then we will factor in Ownership group Finances and Team Location to see how much owners are willing to spend on players based on their total net worth and the market region they play in (ie. An owner in Los Angeles, CA will generally have more money to spend than in owner in Tampa, FL)
+
