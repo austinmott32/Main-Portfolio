@@ -1,0 +1,40 @@
+Verity Global: Enterprise Fraud Monitor
+Real-Time Global Security Intelligence Dashboard
+Verity Global is a high-performance, real-time visualization suite designed to provide security stakeholders with an "at-a-glance" view of global transaction health. By simulating live merchant traffic across five continents, the platform demonstrates the capability to distinguish between standard consumer behavior and high-risk anomalies.
+
+Stakeholder Value Proposition
+This dashboard serves as a central nervous system for security operations, offering three core pillars of value:
+1.	Operational Awareness: Real-time monitoring of transaction throughput (Verified vs. Blocked) ensures that legitimate commerce flows uninterrupted while threats are neutralized.
+2.	Geospatial Intelligence: Identifying "Hot Zones" allows the enterprise to adjust security protocols or authentication requirements based on regional risk spikes.
+3.	Industry-Specific Defense: By categorizing attacks (e.g., Crypto, Luxury, Banking), the system allows for the deployment of industry-specific countermeasures.
+
+System Architecture & Components
+1. Live Security Health (Sidebar)
+•	Metric: A dynamic comparison of Verified (Safe) vs. Blocked (Fraudulent) transactions.
+•	Business Logic: Demonstrates the system's "Precision-over-Paranoia" approach, ensuring the vast majority of safe users enjoy a frictionless experience.
+2. Global Risk Map (Center)
+•	Visual: A live geo-spatial plot of the last 30 network events.
+•	Business Logic: Provides an immediate visual audit of where the brand's digital footprint is most active and where defensive resources are currently deployed.
+3. Regional & Industry Analytics (Sidebar)
+•	Regional Risk: A bar chart identifying which global hubs (NA, EU, AS, etc.) are currently experiencing the highest volumes of intercepted fraud.
+•	Industry Attack Surface: A distribution analysis (Pie Chart) showing which sectors are being targeted by bad actors in the current session.
+4. Global Event Log (Bottom)
+•	Details: A transparent, high-fidelity ledger of the most recent transactions, including Time, Merchant Identity, Amount, and Location.
+
+Technical Implementation (For Developers)
+•	Framework: Built on Streamlit for high-speed, reactive UI updates.
+•	Data Engine: Uses Pandas for real-time aggregation and NumPy for statistical traffic simulation.
+•	Visualization: Powered by Plotly Express, utilizing custom color mapping (#00CC96 for Verified, #EF553B for Blocked) to ensure zero-ambiguity reporting.
+•	Logic: Implements a dynamic "Traffic Burst" engine that simulates 1–5 concurrent transactions per refresh cycle to mimic actual enterprise load.
+
+How to Run the Project
+1.	Ensure you have Python installed.
+2.	Install the required libraries:
+Bash
+pip install streamlit pandas numpy plotly
+3.	Run the application:
+Bash
+streamlit run your_filename.py
+
+Confidentiality Note: This dashboard is a conceptual prototype for Verity Global. The data shown is simulated for demonstration purposes to showcase the platform's architectural robustness and visualization capabilities.
+
