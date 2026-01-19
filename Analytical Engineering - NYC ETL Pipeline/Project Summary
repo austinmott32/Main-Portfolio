@@ -1,0 +1,35 @@
+🚕 NYC Taxi Intelligence: High-Volume Analytics Pipeline
+Project Overview
+This project demonstrates a production-grade data engineering workflow using a Medallion Architecture to process over 2.9 million rows of NYC Taxi data. By leveraging DuckDB and Parquet, the pipeline achieves high-performance "Zero-ETL" ingestion directly from cloud storage, transforming raw logs into an executive-level market share dashboard.
+ Tech Stack
+•	Engine: DuckDB (High-performance SQL OLAP)
+•	Language: Python 3.10+
+•	Validation: Pydantic (Schema Enforcement & Data Contracts)
+•	Visualization: Plotly (Interactive Executive Reporting)
+•	Data Format: Apache Parquet (Cloud-native columnar storage)
+Data Architecture (Medallion Standard)
+1. Data Contract & Validation
+Before ingestion, the pipeline implements a Contract-First approach. Using Pydantic, we validate a sample of the remote data to ensure schema integrity. This prevents "downstream poisoning" by catching unexpected source changes before they hit the warehouse. Segmented layers using the Databricks Bronze, Silver & Gold method.
+2. Bronze Layer (Raw)
+•	Mechanism: Virtual View linking to S3-compatible cloud storage.
+•	Strategy: "Zero-ETL" ingestion. We maintain a raw, immutable pointer to the source Parquet files, allowing for full replayability without local storage overhead.
+3. Silver Layer (Cleansed)
+•	Transformations: Data type casting, timestamp normalization, and record filtering.
+•	Logic: We strip out "telemetry noise"—such as hardware-glitch dates (e.g., year 2001/2049) and zero-distance trips—to create a reliable "Source of Truth."
+4. Gold Layer (Curated Marts)
+•	Analytics: Advanced SQL Window Functions calculate daily revenue efficiency (Revenue per Mile).
+•	Benchmarking: Each vendor's performance is benchmarked against a rolling market average to identify operational outliers.
+Data Quality & Testing
+To ensure boardroom-ready accuracy, the pipeline includes an Automated Quality Gate. This suite runs dbt-style SQL tests to verify:
+•	Null Integrity: Ensuring primary keys and financial columns are populated.
+•	Business Logic: Flagging impossible values (e.g., costs exceeding 10x market average).
+•	Zero-Division Safety: Protecting calculations from erratic "zero-distance" inputs.
+Executive Insights
+The final output is an interactive Market Share Analysis dashboard.
+•	Smoothing: Applied a 3-day rolling average to translate volatile daily spikes into readable business trends.
+•	Context: Used a Stacked Area Chart with Unified Hover functionality, allowing stakeholders to see total market volume while instantly comparing individual vendor contributions.
+How to Run
+1.	Clone the repo: git clone https://github.com/austinmott23/nyc_taxi_pipeline.git
+2.	Install dependencies: pip install duckdb pandas plotly pydantic
+3.	Execute the notebook: Open pipeline.ipynb and run all cells.
+
